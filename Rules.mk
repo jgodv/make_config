@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/13 19:18:25 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/13 21:32:55 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 PROJECT_NAME := fdf
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
+LDLIBS = -lftprintf -lft -lmlx -framework OpenGL -framework AppKit # for graphic
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
