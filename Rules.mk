@@ -6,21 +6,12 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-<<<<<<< Updated upstream
-#    Updated: 2023/05/13 19:18:25 by jgo              ###   ########.fr        #
-=======
-#    Updated: 2023/05/14 10:37:10 by jgo              ###   ########.fr        #
->>>>>>> Stashed changes
+#    Updated: 2023/05/14 11:00:04 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-<<<<<<< Updated upstream
-PROJECT_NAME := fdf
-ARFLAGS := rcs
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
-=======
 PROJECT_NAME := push_swap
 BONUS_NAME := checker
 
@@ -33,7 +24,8 @@ BONUS_LIB_DIR = src/$(BONUD_DIR)/lib
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS := -I$(TOPDIR)/includes $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes,-I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
->>>>>>> Stashed changes
+LDFLAGS := -L$(TOPDIR)/lib
+LDLIBS := -lft -lftprintf
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
