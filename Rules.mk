@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/14 17:25:17 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/17 16:41:30 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,11 @@ endif
 ifdef RACE
 	CXXFLAGS := -fsanitize=thread -MMD -MP -g3
 	LDFLAGS += -fsanitize=thread -g3
+endif
+
+ifdef SHADOW
+	CXXFLAGS += -Wshadow
+	LDFLAGS += -Wshadow
 endif
 
 link_files:: unlink_files
