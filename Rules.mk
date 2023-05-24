@@ -6,13 +6,13 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/24 19:38:20 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/24 19:43:00 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := fdf
+PROJECT_NAME := miniRT
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
 LDLIBS = -lftprintf -lft -lmlx -framework OpenGL -framework AppKit # for graphic
