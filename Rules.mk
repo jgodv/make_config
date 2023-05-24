@@ -6,16 +6,25 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/24 19:43:00 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/24 20:24:18 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
 PROJECT_NAME := miniRT
+
+MANDATORY_DIR := mandatory
+BONUS_DIR := bonus
+
+MANDATORY_LIB_DIR := src/$(MANDATORY_DIR)/lib
+BONUS_LIB_DIR := src/$(BONUD_DIR)/lib
+
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
-LDLIBS = -lftprintf -lft -lmlx -framework OpenGL -framework AppKit # for graphic
+CPPFLAGS = -I$(TOPDIR)/includes $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes, -I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
+LDFLAGS := -L$(TOPDIR)/lib
+LDLIBS := -lft -lmlx -framework OpenGL -framework AppKit
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
