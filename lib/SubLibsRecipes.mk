@@ -6,11 +6,11 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 20:28:04 by jgo               #+#    #+#              #
-#    Updated: 2023/05/25 18:09:24 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/25 18:27:40 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all bonus : 
+all bonus :
 	$(Q)$(call color_printf,$(CYAN),$(NAME),🎯 starting compile $(NAME))
 	$(Q)$(MAKE) $(NAME)
 	$(Q)$(call color_printf,$(GREEN),$(NAME),🔰 done!)
@@ -20,8 +20,9 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib link_files
 	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/$(LIB_DIR) link_files
-	
+
 clean:
+	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib unlink_files
 	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/$(LIB_DIR) unlink_files
 	$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove Objects && Dependency file)
 	$(RM) $(OBJS) $(DEPS)
@@ -29,7 +30,7 @@ clean:
 fclean: clean
 	$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove $(NAME))
 	$(RM) $(NAME)
-	
+
 re : fclean
 	$(MAKE) all
 
