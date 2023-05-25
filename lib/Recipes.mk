@@ -6,33 +6,18 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 14:43:57 by jgo               #+#    #+#              #
-#    Updated: 2023/05/25 15:29:15 by jgo              ###   ########.fr        #
+#    Updated: 2023/05/25 18:17:27 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all bonus:
 	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
-	$(Q)$(call color_printf,$(CYAN),$(NAME),🎯 starting compile $(NAME))
-	$(Q)$(MAKE) $(NAME)
+	$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd`/includes dst_dir=$(TOPDIR)/includes link_files
 	$(Q)$(call color_printf,$(GREEN),$(NAME),🔰 done!)
-
-$(NAME): $(LIBS)
-	$(Q)$(call color_printf,$(GREEN),$(NAME),📚 archive object)
-	$(AR) $(ARFLAGS) $@ $^
-	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib link_files
-	$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes link_files
 	
-clean:
-	$(Q)$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR)/lib unlink_files
+fclean clean:
 	$(Q)$(MAKE) files="$(HEAD)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes unlink_files
 	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
-	$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove Objects && Dependency file)
-	$(RM) $(OBJS) $(DEPS)
-
-fclean: clean
-	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
-	$(Q)$(call color_printf,$(RED),$(NAME),🗑️  remove $(NAME))
-	$(RM) $(NAME)
 
 re: fclean
 	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
