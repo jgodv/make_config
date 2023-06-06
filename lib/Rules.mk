@@ -5,16 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/14 09:54:19 by jgo              ###   ########.fr        #
+#    Created: 2023/05/25 14:34:17 by jgo               #+#    #+#              #
+#    Updated: 2023/05/25 14:50:30 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := pipex
+PROJECT_NAME := libft
+
+LIB_DIR := lib/$(PROJECT_NAME)/libs
+
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
+CPPFLAGS := -I../includes
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
@@ -48,3 +52,4 @@ link_files:: unlink_files
 unlink_files::
 	$(Q)$(foreach file,$(files), $(call color_printf,$(GRAY),$(file),🚫 unlinking file\n) $(RM) $(dst_dir)/$(file);)
 	$(Q)$(foreach file,$(files), $(RM) $(dst_dir)/$(file);)
+
