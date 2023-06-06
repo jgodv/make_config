@@ -5,49 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-<<<<<<< Updated upstream:Rules.mk
-#    Updated: 2023/05/14 11:00:04 by jgo              ###   ########.fr        #
-=======
-#    Updated: 2023/06/06 15:01:01 by jgo              ###   ########.fr        #
->>>>>>> Stashed changes:src/Rules.mk
+#    Created: 2023/05/25 14:34:17 by jgo               #+#    #+#              #
+#    Updated: 2023/05/25 14:50:30 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := push_swap
-BONUS_NAME := checker
+PROJECT_NAME := libft
 
-<<<<<<< Updated upstream:Rules.mk
-MANDATORY_DIR = $(PROJECT_NAME)
-BONUS_DIR = $(BONUS_NAME)
-
-MANDATORY_LIB_DIR = src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR = src/$(BONUD_DIR)/lib
+LIB_DIR := lib/$(PROJECT_NAME)/libs
 
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS := -I$(TOPDIR)/includes $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes,-I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
-LDFLAGS := -L$(TOPDIR)/lib
-LDLIBS := -lft -lftprintf
-=======
-MANDATORY_DIR := $(PROJECT_NAME)
-BONUS_DIR := $(BONUS_NAME)
-
-MANDATORY_LIB_DIR := src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR := src/$(BONUS_DIR)/lib
-
-ARFLAGS := rcs
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS = -I$(TOPDIR)/includes $(if $(findstring bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes,-I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
-LDFLAGS := -L$(TOPDIR)/lib
-LDLIBS := -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lft_str -lftprintf
-
-MAN_DST_DIR := $(TOPDIR)/$(MANDATORY_LIB_DIR)
-BON_DST_DIR := $(TOPDIR)/$(BONUS_LIB_DIR)
-
->>>>>>> Stashed changes:src/Rules.mk
+CPPFLAGS := -I../includes
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
@@ -81,3 +52,4 @@ link_files:: unlink_files
 unlink_files::
 	$(Q)$(foreach file,$(files), $(call color_printf,$(GRAY),$(file),🚫 unlinking file\n) $(RM) $(dst_dir)/$(file);)
 	$(Q)$(foreach file,$(files), $(RM) $(dst_dir)/$(file);)
+
