@@ -6,24 +6,27 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/14 10:37:10 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/06 15:36:40 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := push_swap
-BONUS_NAME := checker
+PROJECT_NAME := philo
+BONUS_NAME := philo_bonus
 
 MANDATORY_DIR = $(PROJECT_NAME)
 BONUS_DIR = $(BONUS_NAME)
 
 MANDATORY_LIB_DIR = src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR = src/$(BONUD_DIR)/lib
+BONUS_LIB_DIR = src/$(BONUS_DIR)/lib
 
 ARFLAGS := rcs
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS := -I$(TOPDIR)/includes $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes,-I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
+CPPFLAGS := -I$(TOPDIR)/includes $(if $(findstring bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes,-I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
+
+MAN_DST_DIR := $(TOPDIR)/$(MANDATORY_LIB_DIR)
+BON_DST_DIR := $(TOPDIR)/$(BONUS_LIB_DIR)
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
