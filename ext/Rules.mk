@@ -5,26 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/06 18:46:25 by jgo              ###   ########.fr        #
+#    Created: 2023/06/06 17:38:45 by jgo               #+#    #+#              #
+#    Updated: 2023/06/06 18:02:16 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := miniRT
+PROJECT_NAME := MLX42
+ARCHIVE_NAME := libmlx42.a
 
-MANDATORY_DIR := mandatory
-BONUS_DIR := bonus
+RM += -r
 
-MANDATORY_LIB_DIR := src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR := src/$(BONUD_DIR)/lib
-
-ARFLAGS := rcs
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS = -I$(TOPDIR)/includes -I$(TOPDIR)/ext/MLX42/include/MLX42 $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes, -I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
-LDFLAGS := -L$(TOPDIR)/lib -L$(TOPDIR)/ext -L$(shell brew --prefix glfw)/lib
-LDLIBS := -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lft_str -lglfw -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit
+BLD_DIR := $(PROJECT_NAME)/build
+MLX_LIB :=
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
