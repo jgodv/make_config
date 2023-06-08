@@ -6,13 +6,13 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/17 16:41:30 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/08 09:57:44 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := cpp_module_03
+PROJECT_NAME := cpp_modules
 STANDARD := c++98 
 CXXFLAGS := -std=$(STANDARD) -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS := -I .
