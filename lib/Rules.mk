@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 14:34:17 by jgo               #+#    #+#              #
-#    Updated: 2023/05/25 14:50:30 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/11 18:26:15 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ PROJECT_NAME := libft
 LIB_DIR := lib/$(PROJECT_NAME)/libs
 
 ARFLAGS := rcs
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
+CFLAGS := -O3 -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS := -I../includes
 
 # verbose
