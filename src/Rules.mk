@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/11 18:24:44 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/12 19:01:27 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ ARFLAGS := rcs
 CFLAGS := -O3 -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS = -I$(TOPDIR)/includes -I$(TOPDIR)/ext/MLX42/include/MLX42 $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes, -I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
 LDFLAGS := -L$(TOPDIR)/lib -L$(TOPDIR)/ext -L$(shell brew --prefix glfw)/lib
-LDLIBS := -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lft_str -lvector -langle -lglfw -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit
+LDLIBS := -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lft_str -lvector -langle -lequation -lglfw -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit
 
 # verbose
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 # debug
 ifdef DEBUG
-	CFLAGS += -g3
+	CFLAGS = -MMD -MP -g3
 endif
 
 # just compile
