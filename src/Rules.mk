@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/18 17:38:11 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/19 09:55:49 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MANDATORY_DIR := mandatory
 BONUS_DIR := bonus
 
 MANDATORY_LIB_DIR := src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR := src/$(BONUD_DIR)/lib
+BONUS_LIB_DIR := src/$(BONUS_DIR)/lib
 
 ARFLAGS := rcs
 CFLAGS := -O3 -Wall -Wextra -Werror -MMD -MP
