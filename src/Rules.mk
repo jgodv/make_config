@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/28 20:07:05 by jgo              ###   ########.fr        #
+#    Updated: 2023/06/30 14:18:02 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ endif
 # address
 ifdef ADDR
 	CFLAGS += -fsanitize=address
+	LDLIBS +=  -fsanitize=address
 endif
 
 ifdef RACE
