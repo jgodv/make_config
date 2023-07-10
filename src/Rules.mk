@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/30 14:18:02 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/10 09:55:18 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 # debug
 ifdef DEBUG
-	CFLAGS = -MMD -MP -g3
+	CFLAGS := -MMD -MP -g3
 endif
 
 # just compile
