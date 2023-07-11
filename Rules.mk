@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/06/08 09:57:44 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/11 13:26:58 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,12 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 # debug
 ifdef DEBUG
-	CXXFLAGS := -g3 -MMD -MP
-	LDFLAGS += -g3
+	CXXFLAGS := -std=$(STANDARD) -g3 -MMD -MP
 endif
 
 # just compile
 ifdef JUST
-	CXXFLAGS := -MMD -MP
+	CXXFLAGS := -std=$(STANDARD) -MMD -MP
 endif
 
 # address
