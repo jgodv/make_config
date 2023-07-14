@@ -6,12 +6,12 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 20:22:27 by jgo               #+#    #+#              #
-#    Updated: 2023/06/20 17:15:59 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/15 06:37:41 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 $(DIRS):
-	$(MAKE) -C $@ bonus
+	$(MAKE) -C $@ bonus $(J)
 
 all bonus :
 	$(Q)$(MAKE) $(DIRS)
@@ -25,17 +25,17 @@ $(NAME): $(OBJS) $(LIBS)
 	$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR) link_files
 
 clean:
-	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
+	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $(J) $@;)
 	$(MAKE) files="$(HEADS)" src_dir=`pwd` dst_dir=$(TOPDIR)/includes unlink_files
 	$(RM) $(DEPS) $(OBJS)
 
 fclean: clean
-	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
+	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $(J) $@;)
 	$(MAKE) files="$(NAME)" src_dir=`pwd` dst_dir=$(TOPDIR) unlink_files
 	$(RM) $(NAME)
 
 re: fclean
-	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $@;)
+	$(Q)$(foreach dir, $(DIRS), $(MAKE) TOPDIR=$(TOPDIR) -C $(dir) $(J) $@;)
 	$(MAKE)
 
 .PHONY: all bonus clean fclean re $(DIRS)
