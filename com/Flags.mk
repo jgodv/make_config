@@ -1,34 +1,43 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    color_rules.mk                                     :+:      :+:    :+:    #
+#    Flags.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/08 20:12:51 by jgo               #+#    #+#              #
-#    Updated: 2023/05/24 19:39:31 by jgo              ###   ########.fr        #
+#    Created: 2023/07/16 20:53:19 by jgo               #+#    #+#              #
+#    Updated: 2023/07/16 20:55:52 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# it's pretty right?
-BOLD_PURPLE	=	\033[1;35m
-BOLD_CYAN	=	\033[1;36m
-BOLD_YELLOW	=	\033[1;33m
-NO_COLOR	=	\033[0m
-GRAY        =	\033[0;90m
-RED         =	\033[0;91m
-GREEN       =	\033[0;92m
-YELLOW      =	\033[0;93m
-BLUE        =	\033[0;94m
-MAGENTA     =	\033[0;95m
-CYAN 		=	\033[0;96m
-WHITE		=	\033[0;97m
-DEF_COLOR	=	\033[0;39m
 
-## printf function define
-define color_printf
-	echo "$(1)\n[$(2)] $(3)$(DEF_COLOR)"
-endef
+# thread
+ifdef JOB
+	J := $(if $(findstring $(JOB), 123456789),-j$(JOB),)
+endif
+
+# verbose
+Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+
+# debug
+ifdef DEBUG
+	CFLAGS += -g3
+endif
+
+# just compile
+ifdef JUST
+	CFLAGS := -MMD -MP
+endif
+
+# address
+ifdef ADDR
+	CFLAGS += -fsanitize=address
+endif
+
+ifdef RACE
+	CFLAGS := -fsanitize=thread -MMD -MP -g3
+	LDFLAGS += -fsanitize=thread -g3
+endif
 
 # $(info $(print_jgo))
 define print_jgo
@@ -44,7 +53,3 @@ define print_jgo
 	\__\/      \  \::/       \  \::/   
 				\__\/         \__\/    
 endef
-
-
-
-
