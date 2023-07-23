@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Targets.mk                                         :+:      :+:    :+:    #
+#    Recipes.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/22 10:49:20 by jgo               #+#    #+#              #
-#    Updated: 2023/04/26 13:38:28 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/23 11:39:33 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ all bonus :
 
 $(NAME): $(OBJS)
 	$(LINK.cc) $^ -o $@
-	$(MAKE) files=$(NAME) src_dir=`pwd` dst_dir=$(DSTDIR) link_files
+	$(MAKE) files=$(NAME) src_dir=`pwd` dst_dir=$(TOPDIR) link_files
 	
 clean:
 	$(Q)$(call color_printf,$(YELLOW),$(NAME),🧹 clean object & dependencies)
@@ -25,7 +25,7 @@ clean:
 
 fclean: clean
 	$(Q)$(call color_printf,$(RED),$(NAME),🗑 remove $(NAME))
-	$(MAKE) files=$(NAME) src_dir=`pwd` dst_dir=$(DSTDIR) unlink_files
+	$(MAKE) files=$(NAME) src_dir=`pwd` dst_dir=$(TOPDIR) unlink_files
 	$(RM) $(NAME)
 
 re: fclean

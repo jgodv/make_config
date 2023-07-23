@@ -6,20 +6,21 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/07/15 10:12:13 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/23 12:18:27 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+ifndef TOPDIR
+	TOPDIR := $(abspath ../)
+endif
 
 .DEFAULT_GOAL := all
 
 PROJECT_NAME := cpp_modules
 STANDARD := c++98
 CXXFLAGS := -std=$(STANDARD) -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS := -I .
+CPPFLAGS := -I$(TOPDIR)/inc
 
-ifndef DSTDIR
-	DSTDIR := $(abspath ../)
-endif
 
 # $(info $(jgo))
 define jgo
