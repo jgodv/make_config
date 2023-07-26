@@ -6,16 +6,20 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 10:06:18 by jgo               #+#    #+#              #
-#    Updated: 2023/07/15 10:08:39 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/26 11:00:24 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # verbose
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+Q := $(if $(filter 1,$(VER) $(VERBOSE)),,@)
 
 # thread
 ifdef JOB
 	J := $(if $(findstring $(JOB), 123456789),-j$(JOB),)
+endif
+
+ifdef V
+	CXXFLAGS += -DV=true
 endif
 
 # debug
