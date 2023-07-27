@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/22 10:49:20 by jgo               #+#    #+#              #
-#    Updated: 2023/07/23 11:39:33 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/27 09:42:19 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,4 +31,4 @@ fclean: clean
 re: fclean
 	$(MAKE)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus $(NAME)
