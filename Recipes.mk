@@ -31,4 +31,4 @@ fclean: clean
 re: fclean
 	$(MAKE)
 
-.PHONY: all clean fclean re bonus $(NAME)
+.PHONY: all clean fclean re bonus

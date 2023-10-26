@@ -24,7 +24,7 @@ endif
 
 # debug
 ifdef DEBUG
-	CXXFLAGS := -std=$(STANDARD) -g3 -MMD -MP
+	CXXFLAGS := -std=$(STANDARD) -g -MMD -MP
 endif
 
 # just compile
