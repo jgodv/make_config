@@ -3,20 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Rules.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/25 14:34:17 by jgo               #+#    #+#              #
-#    Updated: 2025/01/19 21:33:00 by jgo              ###   ########.fr        #
+#    Created: 2023/06/06 17:38:45 by jgo               #+#    #+#              #
+#    Updated: 2023/07/16 18:41:42 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
-PROJECT_NAME := libft
 
-LIB_DIR := lib/$(PROJECT_NAME)/libs
+PROJECT_NAME := MLX42
+ARCHIVE_NAME := libmlx42.a
 
-AR := emar
-CC := emcc
-ARFLAGS := rcs
-CFLAGS := -O3 
-CPPFLAGS := -I../includes
+RM += -r
+
+BLD_DIR := $(PROJECT_NAME)/build
+MLX_LIB :=

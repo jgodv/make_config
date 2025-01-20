@@ -3,59 +3,45 @@
 #                                                         :::      ::::::::    #
 #    Rules.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
+#    By: jgo <jgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/05 14:02:20 by jgo               #+#    #+#              #
-#    Updated: 2023/05/27 19:21:17 by jgo              ###   ########.fr        #
+#    Updated: 2025/01/20 11:02:20 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL := all
 
-PROJECT_NAME := miniRT
+CC := emcc
+PROJECT_NAME := FdF.js
+BONUS_NAME := FdF_bonus.js
 
 MANDATORY_DIR := mandatory
 BONUS_DIR := bonus
 
 MANDATORY_LIB_DIR := src/$(MANDATORY_DIR)/lib
-BONUS_LIB_DIR := src/$(BONUD_DIR)/lib
+BONUS_LIB_DIR := src/$(BONUS_DIR)/lib
 
+AR := emar
 ARFLAGS := rcs
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS = -I$(TOPDIR)/includes $(if $(filter bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes, -I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
-LDFLAGS := -L$(TOPDIR)/lib
-LDLIBS := -lftprintf -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lft_str -lmlx -framework OpenGL -framework AppKit
+CFLAGS := -O3 
+CPPFLAGS := -I$(TOPDIR)/includes -I$(TOPDIR)/ext/MLX42/include/MLX42 $(if $(findstring bonus, $(MAKECMDGOALS)), -I$(TOPDIR)/src/$(BONUS_DIR)/includes, -I$(TOPDIR)/src/$(MANDATORY_DIR)/includes)
+LDFLAGS := -L$(TOPDIR)/lib -L$(TOPDIR)/ext 
+LDLIBS := -O3 -lft_arr -lft_ascii -lft_io -lft_is -lft_lst -lft_math -lft_mem -lftprintf -lft_str -lmlx42 -s USE_GLFW=3 -s USE_WEBGL2=1 -s FULL_ES3=1 -s WASM=1 \
+    -s NO_EXIT_RUNTIME=1 -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]' \
+    -s ALLOW_MEMORY_GROWTH -pthread --preload-file MGDS_ANTARCTIC_OCEAN1_L.fdf
 
-# verbose
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-
-# debug
-ifdef DEBUG
-	CFLAGS += -g3
-endif
-
-# just compile
-ifdef JUST
-	CFLAGS := -MMD -MP
-endif
-
-# address
-ifdef ADDR
-	CFLAGS += -fsanitize=address
-endif
-
-ifdef RACE
-	CFLAGS := -fsanitize=thread -MMD -MP -g3
-	LDFLAGS += -fsanitize=thread -g3
-endif
-
-link_files:: unlink_files
-	$(Q)$(call color_printf,$(GRAY),includes,📁 make includes folder)
-	mkdir -p $(dst_dir);
-	$(Q)$(foreach file,$(files), $(call color_printf,$(CYAN),$(file),🔗 linking file\n) ln -sf $(src_dir)/$(file) $(dst_dir);)
-	$(Q)$(foreach file,$(files), ln -sf $(src_dir)/$(file) $(dst_dir);)
-
-unlink_files::
-	$(Q)$(foreach file,$(files), $(call color_printf,$(GRAY),$(file),🚫 unlinking file\n) $(RM) $(dst_dir)/$(file);)
-	$(Q)$(foreach file,$(files), $(RM) $(dst_dir)/$(file);)
-
+# $(info $(print_jgo))
+define print_jgo
+	___          ___           ___     
+   /  /\        /  /\         /  /\    
+  /  /:/       /  /:/_       /  /::\   
+ /__/::\      /  /:/ /\     /  /:/\:\  
+ \__\/\:\    /  /:/_/::\   /  /:/  \:\ 
+	\  \:\  /__/:/__\/\:\ /__/:/ \__\:\ 
+	 \__\:\ \  \:\ /~~/:/ \  \:\ /  /:/
+	 /  /:/  \  \:\  /:/   \  \:\  /:/ 
+	/__/:/    \  \:\/:/     \  \:\/:/  
+	\__\/      \  \::/       \  \::/   
+				\__\/         \__\/    
+endef
